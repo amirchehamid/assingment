@@ -53,6 +53,34 @@ app.post("/lecturer", async (req, res, next) => {
     }
 })
 
+
+//GET for lecturer to see all list student name
+app.get("/lecturer/list", async (req, res, next) => {
+    try{
+       const result = await UserList.find()
+       res.json(result)
+    } catch(e) {
+        res.status(500).json({
+            error: true,
+            message: e.message
+        })
+    }
+})
+
+//GET for lecturer to see attendance class
+app.get("/lecturer/attendance", async (req, res, next) => {
+    try{
+       const result = await UserModel.find()
+       res.json(result)
+    } catch(e) {
+        res.status(500).json({
+            error: true,
+            message: e.message
+        })
+    }
+})
+
+
 //GET for lecturer to find student who absent or attend class
 app.get("/lecturer/:id", async (req, res, next) => {
     try{
@@ -71,8 +99,7 @@ app.put("/lecturer/:id", async (req, res, next) => {
     try{
         const user = await UserList.findOneAndUpdate({_id: req.params.id}, {
             name: req.body.name,
-            matric: req.body.matric,
-            time: req.body.time
+            matric: req.body.matric
         },{
             new: true,
             useFindAndModify: false
