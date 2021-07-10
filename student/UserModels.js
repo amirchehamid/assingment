@@ -6,6 +6,6 @@ const userSchema = new mongoose.Schema({
     time: String
 })
 
-const UserModel = mongoose.model("benrs", userSchema)
+const UserModel = mongoose.model("Attendance", userSchema)
 
 module.exports = UserModel

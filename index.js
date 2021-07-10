@@ -42,7 +42,9 @@ app.post("/lecturer", async (req, res, next) => {
     try{
         const user = await UserList.create({
             name: req.body.name,
-            matric: req.body.matric
+            matric: req.body.matric,
+            email: req.body.email,
+            phone: req.body.phone
         })
         res.json(user)
     } catch(e) {
@@ -99,7 +101,9 @@ app.put("/lecturer/:id", async (req, res, next) => {
     try{
         const user = await UserList.findOneAndUpdate({_id: req.params.id}, {
             name: req.body.name,
-            matric: req.body.matric
+            matric: req.body.matric,
+            email: req.body.email,
+            phone: req.body.phone
         },{
             new: true,
             useFindAndModify: false
